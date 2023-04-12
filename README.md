@@ -24,11 +24,19 @@
 
 3. Liệt kê tất cả các test cases mà bạn có thể nghĩ ra để kiểm tra 1 mảng có phải là mảng số tăng dần hay không.
 
-| Input                              | Output |
-| ---------------------------------- | ------ |
-| Mảng chỉ gồm không có số nào       | False  |
-| Mảng chỉ gồm 1 số                  | True   |
-| Mảng gồm các số tăng dần           | True   |
-| Mảng gồm các số giảm dần           | False  |
-| Mảng gồm các số sắp xếp ngẫu nhiên | False  |
-| Mảng gồm các số bằng nhau          | True   |
+| Input                        | Output |
+| ---------------------------- | ------ |
+| 'hello'                      | False  |
+| 69                           | False  |
+| true                         | False  |
+| undefined                    | False  |
+| []                           | False  |
+| ['hello', 'world']           | False  |
+| [true, false]                | False  |
+| [undefined, 'hello', 12, 69] | False  |
+| [1]                          | False  |
+| [3, 4, 9, 0, 2]              | False  |
+| [4, 2, 1, -2]                | False  |
+| [1, 2, 3, 3.2]               | True   |
+| [2, 4, 4, 5.5]               | True   |
+| [3, 3, 3, 3]                 | True   |
