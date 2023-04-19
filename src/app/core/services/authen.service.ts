@@ -13,18 +13,15 @@ export default class AuthenService {
   setAuthenHeader() {
     const token = this.storage.getToken();
     this.authenHeader = `Authorization: Bearer ${token}`;
-    // Do something
   }
 
   setNewToken(newToken: string) {
     this.storage.setToken(newToken);
     this.isNewToken = true;
-    // Do something
   }
 
   logOut() {
     this.storage.removeToken();
     this.isLogin = false;
-    // Do something
   }
 }
