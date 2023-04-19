@@ -1,18 +1,9 @@
 export const isAscendingNumbersArray = (arr: any) => {
-  if (!Array.isArray(arr)) {
+  if (!Array.isArray(arr) || !isOnlyNumbers(arr) || arr.length <= 1) {
     return false;
   }
 
-  if (!isOnlyNumbers(arr)) {
-    return false;
-  }
-
-  const length = arr.length;
-  if (length <= 1) {
-    return false;
-  }
-
-  for (let i = 0; i < length - 1; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     if (arr[i] > arr[i + 1]) {
       return false;
     }
