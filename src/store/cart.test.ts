@@ -31,7 +31,7 @@ describe('Test cart', () => {
       cart.removeItem(apple, 1);
       expect(cart.cartItems[0].amount).toBe(1);
     });
-    it('Add 5 apples and remove 2 apple => Cart contain 3 apple', () => {
+    it('Add 5 apples and remove 2 apples => Cart contain 3 apples', () => {
       cart.addItem(apple, 5);
       cart.removeItem(apple, 2);
       expect(cart.cartItems[0].amount).toBe(3);
@@ -45,7 +45,7 @@ describe('Test cart', () => {
       cart.removeItem(apple, 2);
       expect(cart.cartItems.length).toBe(0);
     });
-    it('Add 4 apples + 3 oranges and remove 2 orange => Cart not 4 apples + 1 orange', () => {
+    it('Add 4 apples + 3 oranges and remove 2 orange => Cart contain 4 apples + 1 orange', () => {
       cart.addItem(apple, 4);
       cart.addItem(orange, 3);
       cart.removeItem(orange, 2);
@@ -66,19 +66,19 @@ describe('Test cart', () => {
       cart.addItem(apple, 1);
       const appleCost =
         (apple.price * (100 - apple.discount[0].discount)) / 100;
-      expect(cart.totalCost).toBe(appleCost);
+      expect(cart.totalCost).toBe(appleCost); // 9500
     });
     it('Calculate cost 2 apples', () => {
       cart.addItem(apple, 2);
       const appleCost =
         (2 * apple.price * (100 - apple.discount[1].discount)) / 100;
-      expect(cart.totalCost).toBe(appleCost);
+      expect(cart.totalCost).toBe(appleCost); // 18000
     });
     it('Calculate cost 5 apples', () => {
       cart.addItem(apple, 5);
       const appleCost =
         (5 * apple.price * (100 - apple.discount[1].discount)) / 100;
-      expect(cart.totalCost).toBe(appleCost);
+      expect(cart.totalCost).toBe(appleCost); // 45000
     });
 
     it('Calculate cost 1 apple + 1 orange', () => {
@@ -88,7 +88,7 @@ describe('Test cart', () => {
         (apple.price * (100 - apple.discount[0].discount)) / 100;
       const orangeCost = orange.price;
       const total = appleCost + orangeCost;
-      expect(cart.totalCost).toBe(total);
+      expect(cart.totalCost).toBe(total); // 29500
     });
     it('Calculate cost 1 apple + 2 oranges', () => {
       cart.addItem(apple, 1);
@@ -98,7 +98,7 @@ describe('Test cart', () => {
       const orangeCost =
         (2 * orange.price * (100 - orange.discount[0].discount)) / 100;
       const total = appleCost + orangeCost;
-      expect(cart.totalCost).toBe(total);
+      expect(cart.totalCost).toBe(total); // 45500
     });
     it('Calculate cost 3 apples + 2 oranges', () => {
       cart.addItem(apple, 3);
@@ -108,7 +108,7 @@ describe('Test cart', () => {
       const orangeCost =
         (2 * orange.price * (100 - orange.discount[0].discount)) / 100;
       const total = appleCost + orangeCost;
-      expect(cart.totalCost).toBe(total);
+      expect(cart.totalCost).toBe(total); // 63000
     });
     it('Calculate cost 3 apples + 5 oranges', () => {
       cart.addItem(apple, 3);
@@ -118,7 +118,7 @@ describe('Test cart', () => {
       const orangeCost =
         (5 * orange.price * (100 - orange.discount[1].discount)) / 100;
       const total = appleCost + orangeCost;
-      expect(cart.totalCost).toBe(total);
+      expect(cart.totalCost).toBe(total); // 107000
     });
     it('Calculate cost 10 apples + 15 oranges', () => {
       cart.addItem(apple, 10);
@@ -128,7 +128,7 @@ describe('Test cart', () => {
       const orangeCost =
         (15 * orange.price * (100 - orange.discount[1].discount)) / 100;
       const total = appleCost + orangeCost;
-      expect(cart.totalCost).toBe(total);
+      expect(cart.totalCost).toBe(total); // 330000
     });
   });
 });
