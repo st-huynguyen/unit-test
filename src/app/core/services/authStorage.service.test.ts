@@ -14,15 +14,17 @@ describe('Test AuthStorageService', () => {
 
   it('Test getToken method', () => {
     jest.spyOn(Storage.prototype, 'getItem');
-    authStorageService.getToken();
+    const token = authStorageService.getToken();
     expect(localStorage.getItem).toBeCalledTimes(1);
     expect(localStorage.getItem).toBeCalledWith(key);
+    expect(token).toEqual(value);
   });
 
   it('Test removeToken method', () => {
     jest.spyOn(Storage.prototype, 'removeItem');
-    authStorageService.removeToken();
+    const token = authStorageService.removeToken();
     expect(localStorage.removeItem).toBeCalledTimes(1);
     expect(localStorage.removeItem).toBeCalledWith(key);
+    expect(token).toEqual(undefined);
   });
 });
