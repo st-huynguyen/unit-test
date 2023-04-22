@@ -1,5 +1,9 @@
 export const isAscendingNumbersArray = (arr: any) => {
-  if (!Array.isArray(arr) || !isOnlyNumbers(arr) || arr.length <= 1) {
+  if (
+    !Array.isArray(arr) ||
+    arr.some((item) => typeof item !== 'number') ||
+    arr.length <= 1
+  ) {
     return false;
   }
 
@@ -10,10 +14,4 @@ export const isAscendingNumbersArray = (arr: any) => {
   }
 
   return true;
-};
-
-const isOnlyNumbers = (arr: any) => {
-  return arr.every((element: any) => {
-    return typeof element === 'number';
-  });
 };
