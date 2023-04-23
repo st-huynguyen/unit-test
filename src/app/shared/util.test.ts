@@ -29,6 +29,9 @@ describe('Check if the input array is an ascending sorted numbers', () => {
     it('Random value array may be return false', () => {
       expect(isAscendingNumbersArray([undefined, 'hello', 12, 69])).toBe(false);
     });
+    it('Last element of array is string may be return false', () => {
+      expect(isAscendingNumbersArray([1, 2, 3, '4'])).toBe(false);
+    });
   });
   describe('The input is a numbers array', () => {
     it('Array has 1 number may be return false', () => {
@@ -45,6 +48,12 @@ describe('Check if the input array is an ascending sorted numbers', () => {
     });
     it('Increased array has same value may be return true', () => {
       expect(isAscendingNumbersArray([2, 4, 4, 5.5])).toBe(true);
+    });
+    it('Increased array has same value at first may be return true', () => {
+      expect(isAscendingNumbersArray([2, 2, 3, 4])).toBe(true);
+    });
+    it('Increased array has same value at last may be return true', () => {
+      expect(isAscendingNumbersArray([2, 3, 4, 4])).toBe(true);
     });
     it('Same numbers array may be return true', () => {
       expect(isAscendingNumbersArray([3, 3, 3, 3])).toBe(true);
