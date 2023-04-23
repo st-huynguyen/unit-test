@@ -22,18 +22,8 @@
       "@shared/*": ["src/app/shared/*"],
       "@config/*": ["src/config/*"]
     },
-    "lib": [
-      "es6",
-      "es7",
-      "dom"
-    ]
+    "lib": ["es6", "es7", "dom"]
   },
-  "include": [
-    "./src/**/*",
-  ],
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["dist", "build", "node_modules"]
 }
