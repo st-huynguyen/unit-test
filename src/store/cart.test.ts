@@ -14,13 +14,13 @@ describe('Test cart', () => {
   describe('Test addItem method', () => {
     it('Add 1 apple to cart => Cart contain 1 apple', () => {
       cart.addItem(apple, 1);
-      expect(cart.cartItems[0].amount).toBe(1);
-      expect(cart.cartItems[0].name).toBe('apple');
+      expect(cart.getItem(apple).amount).toBe(1);
+      expect(cart.getItem(apple).name).toBe('apple');
     });
     it('Add 2 apples to cart => Cart contain 2 apples', () => {
       cart.addItem(apple, 2);
-      expect(cart.cartItems[0].amount).toBe(2);
-      expect(cart.cartItems[0].name).toBe('apple');
+      expect(cart.getItem(apple).amount).toBe(2);
+      expect(cart.getItem(apple).name).toBe('apple');
       expect(cart.cartItems.length).toBe(1);
     });
   });
@@ -29,12 +29,12 @@ describe('Test cart', () => {
     it('Add 2 apples and remove 1 apple => Cart contain 1 apple', () => {
       cart.addItem(apple, 2);
       cart.removeItem(apple, 1);
-      expect(cart.cartItems[0].amount).toBe(1);
+      expect(cart.getItem(apple).amount).toBe(1);
     });
     it('Add 5 apples and remove 2 apples => Cart contain 3 apples', () => {
       cart.addItem(apple, 5);
       cart.removeItem(apple, 2);
-      expect(cart.cartItems[0].amount).toBe(3);
+      expect(cart.getItem(apple).amount).toBe(3);
     });
     it('Add 1 apple and remove 1 apple => Cart not contain apple', () => {
       cart.addItem(apple, 1);
@@ -50,10 +50,10 @@ describe('Test cart', () => {
       cart.addItem(orange, 3);
       cart.removeItem(orange, 2);
       expect(cart.cartItems.length).toBe(2);
-      expect(cart.cartItems[0].amount).toBe(4);
-      expect(cart.cartItems[0].name).toBe('apple');
-      expect(cart.cartItems[1].amount).toBe(1);
-      expect(cart.cartItems[1].name).toBe('orange');
+      expect(cart.getItem(apple).amount).toBe(4);
+      expect(cart.getItem(apple).name).toBe('apple');
+      expect(cart.getItem(orange).amount).toBe(1);
+      expect(cart.getItem(orange).name).toBe('orange');
     });
   });
 

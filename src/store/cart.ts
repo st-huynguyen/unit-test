@@ -1,4 +1,4 @@
-import { Fruit } from './fruit';
+import { DiscountInterface, Fruit } from './fruit';
 
 interface CartInterface {
   cartItems: Fruit[];
@@ -14,32 +14,41 @@ export class Cart implements CartInterface {
     this.totalCost = 0;
   }
 
-  addItem(item: Fruit, amount: number) {
-    const existedItem = this.cartItems.findIndex(
-      (fruit) => fruit.name === item.name
-    );
+  getItem(fruit: Fruit) {
+    return this.cartItems.find((item) => item.name === fruit.name);
+  }
 
-    if (existedItem !== -1) {
-      this.cartItems[existedItem].amount += amount;
+  addItem(item: Fruit, amount: number) {
+    const existedItem = this.getItem(item);
+    if (existedItem) {
+      existedItem.amount += amount;
     } else {
-      this.cartItems.push({ ...item, amount });
+      const newItem = { ...item, amount };
+      newItem.discount = this.sortDiscount(item.discount);
+      this.cartItems.push(newItem);
     }
     this.calculateCost();
   }
 
   removeItem(item: Fruit, amount: number) {
-    const existedItem = this.cartItems.findIndex(
-      (fruit) => fruit.name === item.name
-    );
-    if (existedItem !== -1) {
-      const currentAmount = this.cartItems[existedItem].amount;
+    const existedItem = this.getItem(item);
+    if (existedItem) {
+      const currentAmount = existedItem.amount;
       if (currentAmount === amount) {
-        this.cartItems.splice(existedItem, 1);
+        const updatedCart = this.cartItems.filter(
+          (item) => item.name !== existedItem.name
+        );
+        this.cartItems = updatedCart;
       } else if (currentAmount > amount) {
-        this.cartItems[existedItem].amount -= amount;
+        existedItem.amount -= amount;
       }
     }
     this.calculateCost();
+  }
+
+  sortDiscount(discount: DiscountInterface[]) {
+    const newDiscount = [...discount];
+    return newDiscount.sort((a, b) => a.appliedAmount - b.appliedAmount);
   }
 
   calculateCost() {
